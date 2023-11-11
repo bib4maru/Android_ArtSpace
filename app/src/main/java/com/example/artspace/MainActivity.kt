@@ -17,6 +17,10 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -63,7 +67,71 @@ class MainActivity : ComponentActivity() {
 fun ArtSpaceApp(modifier: Modifier = Modifier){
     val list = ArrayList<Card>(4)
 
+    list.add(Card(
+        R.drawable.mona,
+        R.string.image_name_1,
+        R.string.author_1,
+        R.string.year_1
+    ))
 
+    list.add(Card(
+        R.drawable.morning,
+        R.string.image_name_2,
+        R.string.author_2,
+        R.string.year_2
+    ))
+
+    list.add(Card(
+        R.drawable.night,
+        R.string.image_name_3,
+        R.string.author_3,
+        R.string.year_3
+    ))
+
+    list.add(Card(
+        R.drawable.memory,
+        R.string.image_name_4,
+        R.string.author_4,
+        R.string.year_4
+    ))
+
+    var currentId by remember {
+        mutableStateOf(0)
+    }
+
+    Column(
+        verticalArrangement = Arrangement.SpaceBetween,
+        horizontalAlignment = Alignment.CenterHorizontally
+
+    ) {
+        Column(
+            modifier = modifier
+                .fillMaxSize()
+        ) {
+            ArtCard(
+                image = list[currentId].image,
+                name = list[currentId].name,
+                author = list[currentId].author,
+                year = list[currentId].year,
+                onNext = {
+                    if (currentId == list.size - 1){
+                        currentId = 0
+                    } else {
+                        currentId += 1
+                    }
+                },
+                onPrevious = {
+                    if (currentId == 0){
+                        currentId = list.size - 1
+                    } else {
+                        currentId -= 1
+                    }
+                },
+                modifier = modifier
+                    .fillMaxSize()
+            )
+        }
+    }
 }
 
 @Composable
@@ -147,7 +215,8 @@ fun ArtCard(
 
 @Preview(showBackground = true)
 @Composable
-fun GreetingPreview() {
+fun DefaultPreview() {
     ArtSpaceTheme {
+        ArtSpaceApp()
     }
 }

@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">ArtSpace</string>
+    <string name="image_name_1">Мона Лиза</string>
+    <string name="image_name_2">Утро в сосновом лесу</string>
+    <string name="image_name_3">Звёздная ночь</string>
+    <string name="image_name_4">Постоянство памяти</string>
+    <string name="author_1">Леонардо Да Винчи</string>
+    <string name="author_2">Иван Иванович Шишкин</string>
+    <string name="author_3">Винсент Ван Гог</string>
+    <string name="author_4">Сальвадор Дали</string>
+    <string name="year_1">1503</string>
+    <string name="year_2">1889</string>
+    <string name="year_3">1889</string>
+    <string name="year_4">1931</string>
+</resources>
